@@ -1,5 +1,7 @@
 <template>
-  <v-container> </v-container>
+  <v-container fluid>
+    <p class="text-h3">Hello!</p>
+  </v-container>
 </template>
 
 <script>
