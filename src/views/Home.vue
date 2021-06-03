@@ -1,15 +1,17 @@
 <template>
-  <hello-world />
+  <v-container fluid>
+    <p class="text-center text-h2 font-weight-bold">TEACHER DASHBOARD</p>
+    <v-divider class="my-7"></v-divider>
+    <p class="text-center text-h5 font-italic">
+      Crie uma conta para começar...
+    </p>
+  </v-container>
 </template>
 
 <script>
-import HelloWorld from "../components/HelloWorld";
-
 export default {
   name: "Home",
-
-  components: {
-    HelloWorld,
-  },
 };
 </script>
+
+<style scoped></style>
