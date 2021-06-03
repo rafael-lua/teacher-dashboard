@@ -1,24 +1,7 @@
-# test-project
+# TEACHER DASHBOARD
 
-## Project setup
-```
-npm install
-```
+A simple SPA teacher dashboard, allowing a teacher to view, add and modify students information.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Made with Vue 2, Vuex and Vuetify.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+JSON Server is used for database testing with Axios requests.
