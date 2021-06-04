@@ -12,6 +12,9 @@
 </template>
 
 <script>
+/**
+ * Teacher dashboard for interaction with the system
+ */
 export default {
   name: "Dashboard",
 };
