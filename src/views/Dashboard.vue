@@ -1,20 +1,55 @@
 <template>
-  <v-container fluid>
-    <v-app-bar color="blue-grey darken-3 white--text" app>
-      <v-container fill-height fluid class="d-flex justify-space-between">
-        <p class="text-uppercase font-weight-medium text-body-2">log-out</p>
-        <p class="font-weight-regular">
-          Welcome, <span class="font-weight-bold">{teacher name}</span>
-        </p>
-      </v-container>
-    </v-app-bar>
+  <v-container fluid class="pa-0">
+    <!-- dashboard main navigation  -->
+    <DashboardTopNavigation />
+
+    <v-row>
+      <v-col>
+        <!-- dashboard left control panel -->
+        <DashboardControlPanel @setController="setController" />
+      </v-col>
+
+      <!-- main content area for the controller components ocupy -->
+      <v-col>
+        <v-container>
+          <div v-if="view('overview')">Overview</div>
+          <div v-if="view('subjects')">Subjects</div>
+          <div v-if="view('students')">Students</div>
+        </v-container>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import DashboardTopNavigation from "../components/dashboard/DashboardTopNavigation";
+import DashboardControlPanel from "../components/dashboard/DashboardControlPanel";
+
+/**
+ * Teacher dashboard for interaction with the system
+ */
 export default {
   name: "Dashboard",
+
+  components: {
+    DashboardTopNavigation,
+    DashboardControlPanel,
+  },
+
+  data() {
+    return {
+      controller: "overview",
+    };
+  },
+
+  methods: {
+    view: function (v) {
+      return v === this.controller;
+    },
+
+    setController: function (c) {
+      this.controller = c;
+    },
+  },
 };
 </script>
-
-<style scoped></style>
