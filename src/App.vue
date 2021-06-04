@@ -13,6 +13,9 @@
 </template>
 
 <script>
+/**
+ * Main component of the whole app.
+ */
 export default {
   name: "App",
 
