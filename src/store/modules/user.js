@@ -17,7 +17,7 @@ const module = {
   actions: {
     // Can be async
     // Can commit multiple mutations
-    // `context` is being destructured
+    // `context` is being destructured to commit. There is also `dispatch`, etc...
     changeUsername({ commit }, newUsername) {
       const n = Math.floor(Math.random() * 100);
       commit("changeUsername", newUsername + n);
