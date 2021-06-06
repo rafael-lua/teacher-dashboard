@@ -3,7 +3,12 @@
     <v-form v-model="isValid" @submit.prevent="handleSubmit">
       <v-container class="d-flex justify-center">
         <v-card elevation="1" class="pa-2" outlined shaped :width="cardWidth">
+          <!-- providers can be refactored into smaller components, 
+          see: https://vee-validate.logaretm.com/v3/advanced/refactoring-forms.html -->
           <v-card-title>Log-in to start:</v-card-title>
+          <v-alert v-model="showAlert" dense outlined dismissible type="error">
+            The credentials are not valid or doesn't exist.
+          </v-alert>
           <v-row class="d-flex justify-center">
             <v-col cols="10">
               <!-- username text field and validation rules -->
@@ -55,6 +60,7 @@
                   width="12em"
                   type="submit"
                   :disabled="invalid"
+                  :loading="isChecking"
                 >
                   Log-In
                   <v-icon right dark> mdi-account-arrow-right </v-icon>
@@ -122,13 +128,18 @@ export default {
       username: "",
       password: "",
       showPassword: false,
+      isChecking: false,
+      showAlert: false,
     };
   },
 
   methods: {
     async handleSubmit() {
       // https://vee-validate.logaretm.com/v3/api/validate.html#validate
+      this.isChecking = true;
       const isValid = await this.$refs.observer.validate();
+      this.isChecking = false;
+      this.showAlert = true;
       console.log(isValid);
     },
   },
