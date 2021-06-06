@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 /**
  * Main component of the whole app.
  */
@@ -22,5 +23,17 @@ export default {
   data: () => ({
     //
   }),
+
+  methods: {
+    ...mapActions({
+      login: "checkCredentials",
+    }),
+  },
+
+  computed: {
+    ...mapState({
+      authenticated: (state) => state.authenticated,
+    }),
+  },
 };
 </script>

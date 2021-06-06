@@ -139,13 +139,12 @@ export default {
       this.isChecking = true;
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
-        // This could also be an await for a async action that would use axios to login on the server
-        this.login({ username: this.username, password: this.password });
+        await this.login({ username: this.username, password: this.password });
         if (!this.authenticated) {
           this.showAlert = true;
         } else {
           // Succefully logged in, route it to the dashboard
-          this.$router.push("dashboard");
+          this.$router.push({ name: "Dashboard" });
         }
       }
       this.isChecking = false;
