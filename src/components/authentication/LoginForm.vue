@@ -139,7 +139,11 @@ export default {
       this.isChecking = true;
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
-        await this.login({ username: this.username, password: this.password });
+        await this.login({
+          username: this.username,
+          password: this.password,
+        });
+        this.isChecking = false;
         if (!this.authenticated) {
           this.showAlert = true;
         } else {
