@@ -1,8 +1,8 @@
 // "proxy": "http://localhost:3001"
-const API_PRIVATE_KEY = process.env.AUTH || null;
+const API_NOT_PRIVATE_KEY = process.env.VUE_APP_AUTH || null;
 
 export const headers = {
-  Authorization: API_PRIVATE_KEY,
+  Authorization: API_NOT_PRIVATE_KEY,
 };
 
 export const API_SERVER =

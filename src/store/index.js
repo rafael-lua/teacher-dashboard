@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+axios.defaults.timeout = 10000;
 import { headers, API_SERVER } from "../utils/config";
 
 import user from "./modules/user";
@@ -27,7 +28,6 @@ export default new Vuex.Store({
     // Can commit multiple mutations
     // `context` is being destructured to commit. There is also `dispatch`, etc...
     async checkCredentials({ commit }, credentials) {
-      console.log(process.env.AUTH);
       // This is not how you should do, but for this simple application, its fine.
       const response = await axios.get(`${API_SERVER}/users`, { headers });
       const users = response.data;
