@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import router from "../router/index";
 
 import user from "./modules/user";
 
@@ -44,7 +43,6 @@ export default new Vuex.Store({
       if (state.authenticated) {
         commit("user/clearUser");
         commit("authenticate", false);
-        router.push({ name: "Home" });
       }
     },
   },

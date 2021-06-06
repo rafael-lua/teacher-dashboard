@@ -38,8 +38,12 @@ export default {
     home() {
       this.$router.push({ name: "Home" });
     },
+    logout() {
+      this.clearUser();
+      this.$router.push({ name: "Home" });
+    },
     ...mapActions({
-      logout: "logout",
+      clearUser: "logout",
     }),
   },
 };
