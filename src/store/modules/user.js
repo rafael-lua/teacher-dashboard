@@ -1,5 +1,4 @@
-// Temporary state for testing purposes
-const initialState = {
+const noUser = {
   username: "",
   name: "",
   surname: "",
@@ -12,11 +11,16 @@ const initialState = {
 const module = {
   namespaced: true,
 
-  state: initialState,
+  state: {
+    user: noUser,
+  },
 
   mutations: {
     setUser(state, userData) {
-      state = { ...state, userData };
+      state.user = userData;
+    },
+    clearUser(state) {
+      state.user = noUser;
     },
   },
 };

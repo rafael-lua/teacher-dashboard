@@ -1,6 +1,6 @@
 <template>
-  <ValidationObserver ref="observer" v-slot="{ invalid }">
-    <v-form v-model="isValid" @submit.prevent="handleSubmit">
+  <ValidationObserver ref="observer" v-slot="{ valid }">
+    <v-form @submit.prevent="handleSubmit">
       <v-container class="d-flex justify-center">
         <v-card elevation="1" class="pa-2" outlined shaped :width="cardWidth">
           <!-- providers can be refactored into smaller components, 
@@ -59,7 +59,7 @@
                   class="my-2 my-sm-0"
                   width="12em"
                   type="submit"
-                  :disabled="invalid"
+                  :disabled="!valid"
                   :loading="isChecking"
                 >
                   Log-In
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import { required, min, max } from "vee-validate/dist/rules";
 import {
   extend,
@@ -93,7 +94,7 @@ import {
   setInteractionMode,
 } from "vee-validate";
 
-setInteractionMode("eager");
+setInteractionMode("aggressive");
 
 //https://vee-validate.logaretm.com/v3/guide/basics.html#messages
 extend("required", {
@@ -124,7 +125,6 @@ export default {
 
   data() {
     return {
-      isValid: false,
       username: "",
       password: "",
       showPassword: false,
@@ -138,10 +138,22 @@ export default {
       // https://vee-validate.logaretm.com/v3/api/validate.html#validate
       this.isChecking = true;
       const isValid = await this.$refs.observer.validate();
+      if (isValid) {
+        // This could also be an await for a async action that would use axios to login on the server
+        this.login({ username: this.username, password: this.password });
+        if (!this.authenticated) {
+          this.showAlert = true;
+        } else {
+          // Succefully logged in, route it to the dashboard
+          this.$router.push("dashboard");
+        }
+      }
       this.isChecking = false;
-      this.showAlert = true;
-      console.log(isValid);
     },
+
+    ...mapActions({
+      login: "checkCredentials",
+    }),
   },
 
   computed: {
@@ -159,6 +171,10 @@ export default {
           return "100%";
       }
     },
+
+    ...mapState({
+      authenticated: (state) => state.authenticated,
+    }),
   },
 };
 </script>

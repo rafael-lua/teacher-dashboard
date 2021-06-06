@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import router from "../router/index";
 
 import user from "./modules/user";
 
@@ -36,9 +37,14 @@ export default new Vuex.Store({
       if (user && user.password === credentials.password) {
         commit("authenticate", true);
         commit("user/setUser", { user });
-        console.log("Login successed");
-      } else {
-        console.log("Login failed");
+      }
+    },
+
+    logout({ commit, state }) {
+      if (state.authenticated) {
+        commit("user/clearUser");
+        commit("authenticate", false);
+        router.push({ name: "Home" });
       }
     },
   },
