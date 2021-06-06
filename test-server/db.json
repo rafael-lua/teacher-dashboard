@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "subjects": [],
+  "students": [],
+  "timestamp": {
+    "value": "Sat Jun 05 2021 20:32:16 GMT-0300 (Brasilia Standard Time)"
+  }
+}

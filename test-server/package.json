@@ -1,0 +1,16 @@
+{
+  "name": "test-server",
+  "version": "1.0.0",
+  "description": "test server for the teacher dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy:server": "git subtree push --prefix ./test-server teacher-server main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rafael-lua",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}

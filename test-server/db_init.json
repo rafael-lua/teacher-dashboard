@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "subjects": [],
+  "students": [],
+  "timestamp": {
+    "value": ""
+  }
+}
