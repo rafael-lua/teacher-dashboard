@@ -27,6 +27,7 @@ export default new Vuex.Store({
     // Can commit multiple mutations
     // `context` is being destructured to commit. There is also `dispatch`, etc...
     async checkCredentials({ commit }, credentials) {
+      console.log(process.env.AUTH);
       // This is not how you should do, but for this simple application, its fine.
       const response = await axios.get(`${API_SERVER}/users`, { headers });
       const users = response.data;
