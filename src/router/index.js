@@ -39,6 +39,7 @@ const router = new VueRouter({
  * Only allow navigation for authenticated users
  */
 router.beforeEach((to, from, next) => {
+  console.log(store.state.authenticated);
   if (to.name !== "Home" && !store.state.authenticated) {
     next({ name: "Home" });
   } else next();
