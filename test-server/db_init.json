@@ -1,4 +1,15 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "timestamp": { "value": "" }
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "subjects": [],
+  "students": [],
+  "timestamp": {
+    "value": ""
+  }
 }
