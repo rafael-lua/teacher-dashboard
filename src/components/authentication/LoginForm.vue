@@ -2,7 +2,7 @@
   <v-form v-model="isValid">
     <v-container class="d-flex justify-center">
       <v-card elevation="1" class="pa-2" outlined shaped :width="cardWidth">
-        <v-card-title>Log-in in to start:</v-card-title>
+        <v-card-title>Log-in to start:</v-card-title>
         <v-row class="d-flex justify-center">
           <v-col cols="10">
             <v-text-field
