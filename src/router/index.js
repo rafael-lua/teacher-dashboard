@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store/index";
 
 import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
@@ -33,5 +34,27 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+/**
+ * Only allow navigation for authenticated users
+ */
+router.beforeEach((to, from, next) => {
+  if (to.name !== "Home" && !store.state.authenticated) {
+    next({ name: "Home" });
+  } else next();
+});
+
+/* ASYNC EXAMPLE
+
+router.beforeEach(async (to, from, next) => {
+  if (to.name !== "Home" && !store.state.authenticated) {
+    next({ name: "Home" });
+  } else {
+    await store.dispatch("asyncAction")
+    next()
+  };
+});
+
+*/
 
 export default router;

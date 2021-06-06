@@ -1,7 +1,13 @@
+// Temporary state for testing purposes
 const initialState = {
-  username: "admin",
-  password: "admin",
+  username: "",
+  name: "",
+  surname: "",
 };
+
+/**
+ * This module keep and modify the logged user data
+ */
 
 const module = {
   namespaced: true,
@@ -9,18 +15,8 @@ const module = {
   state: initialState,
 
   mutations: {
-    changeUsername(state, newUsername) {
-      state.username = newUsername;
-    },
-  },
-
-  actions: {
-    // Can be async
-    // Can commit multiple mutations
-    // `context` is being destructured to commit. There is also `dispatch`, etc...
-    changeUsername({ commit }, newUsername) {
-      const n = Math.floor(Math.random() * 100);
-      commit("changeUsername", newUsername + n);
+    setUser(state, userData) {
+      state = { ...state, userData };
     },
   },
 };
