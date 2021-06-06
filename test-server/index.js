@@ -6,6 +6,7 @@ const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
+const cors = require("cors");
 
 const authorizationChecker = (req, res, next) => {
   const auth = req.get("authorization");
@@ -46,6 +47,7 @@ const timestampChecker = (req, res, next) => {
   next();
 };
 
+server.use(cors());
 server.use(authorizationChecker);
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
