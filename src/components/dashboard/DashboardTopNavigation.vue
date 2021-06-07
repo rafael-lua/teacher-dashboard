@@ -1,27 +1,40 @@
 <template>
-  <v-app-bar color="green darken-1 white--text fixIndex">
+  <v-app-bar color="teal darken-1 white--text fixIndex">
     <v-container
       fill-height
       fluid
       class="d-flex justify-space-between pa-0 ma-0s"
     >
-      <v-btn
-        color="white"
-        class="text-uppercase font-weight-medium text-body-2 pa-0 ma-0"
-        @click="home"
-      >
-        home
-      </v-btn>
-      <v-btn
-        color="red"
-        class="text-uppercase font-weight-medium text-body-2 pa-0 ma-0"
-        @click="logout"
-      >
-        log-out
-      </v-btn>
-      <p class="font-weight-regular pa-0 ma-0">
-        Welcome, <span class="font-weight-bold">{{ user.name }}</span>
-      </p>
+      <nav>
+        <v-btn
+          text
+          color="white"
+          class="text-uppercase font-weight-medium text-body-2 ma-0"
+          @click="home"
+        >
+          home
+        </v-btn>
+        <v-btn
+          text
+          color="white"
+          class="text-uppercase font-weight-medium text-body-2 ma-0"
+        >
+          doc
+        </v-btn>
+        <v-btn
+          text
+          color="white"
+          class="text-uppercase font-italic font-weight-medium text-body-2 ma-0"
+          @click="logout"
+        >
+          log-out
+        </v-btn>
+      </nav>
+      <div>
+        <p class="font-weight-regular pa-0 ma-0">
+          Welcome, <span class="font-weight-bold">{{ user.name }}</span>
+        </p>
+      </div>
     </v-container>
   </v-app-bar>
 </template>
