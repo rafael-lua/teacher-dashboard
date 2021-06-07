@@ -1,12 +1,17 @@
 <template>
-  <v-navigation-drawer permanent cliped class="lighten-5">
+  <v-navigation-drawer
+    permanent
+    cliped
+    class="lighten-5"
+    :expand-on-hover="shrinkPanel"
+  >
     <v-list shaped dense>
       <v-list-item class="py-1">
         <v-list-item-content>
           <v-list-item-title class="text-h6 text-uppercase">
-            dashboard
+            <v-icon dense>mdi-view-dashboard</v-icon> dashboard
           </v-list-item-title>
-          <v-list-item-subtitle>General functionality</v-list-item-subtitle>
+          <v-list-item-subtitle>General management</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -22,7 +27,12 @@
             :key="controller.name"
             @click="$emit('setController', controller.name)"
           >
-            <v-list-item-content> {{ controller.text }} </v-list-item-content>
+            <v-list-item-icon>
+              <v-icon dense>{{ controller.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              {{ controller.text }}
+            </v-list-item-content>
           </v-list-item>
         </template>
       </v-list-item-group>
@@ -41,11 +51,20 @@ export default {
     return {
       currentControllerId: 0,
       controllerList: [
-        { name: "overview", text: "Overview" },
-        { name: "subjects", text: "Subjects" },
-        { name: "students", text: "Students" },
+        { name: "overview", text: "Overview", icon: "mdi-card-search-outline" },
+        { name: "subjects", text: "Subjects", icon: "mdi-shape-outline" },
+        { name: "students", text: "Students", icon: "mdi-google-classroom" },
       ],
     };
+  },
+
+  computed: {
+    shrinkPanel() {
+      if (this.$vuetify.breakpoint.name === "xs") {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
