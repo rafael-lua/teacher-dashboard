@@ -6,7 +6,7 @@
           <v-list-item-title class="text-h6 text-uppercase">
             dashboard
           </v-list-item-title>
-          <v-list-item-subtitle>General functionality</v-list-item-subtitle>
+          <v-list-item-subtitle>General management</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
