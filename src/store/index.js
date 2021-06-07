@@ -35,7 +35,7 @@ export default new Vuex.Store({
         const user = users.find((u) => u.username === credentials.username);
         if (user && user.password === credentials.password) {
           commit("authenticate", true);
-          commit("user/setUser", { user });
+          commit("user/setUser", user);
         }
       } catch (error) {
         return "timedout";

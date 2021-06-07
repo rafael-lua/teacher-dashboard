@@ -20,14 +20,14 @@
         log-out
       </v-btn>
       <p class="font-weight-regular pa-0 ma-0">
-        Welcome, <span class="font-weight-bold">{teacher name}</span>
+        Welcome, <span class="font-weight-bold">{{ user.name }}</span>
       </p>
     </v-container>
   </v-app-bar>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 /**
  * The top navigation bar of the main dashboard, with user information and general status
  */
@@ -44,6 +44,12 @@ export default {
     },
     ...mapActions({
       clearUser: "logout",
+    }),
+  },
+
+  computed: {
+    ...mapState("user", {
+      user: (state) => state.user,
     }),
   },
 };
