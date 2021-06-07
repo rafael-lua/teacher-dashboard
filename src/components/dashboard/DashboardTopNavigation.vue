@@ -12,13 +12,14 @@
           class="text-uppercase font-weight-medium text-body-2 ma-0"
           @click="home"
         >
-          home
+          <v-icon small class="mr-1">mdi-home</v-icon> home
         </v-btn>
         <v-btn
           text
           color="white"
           class="text-uppercase font-weight-medium text-body-2 ma-0"
         >
+          <v-icon small class="mr-1">mdi-book-open-page-variant-outline</v-icon>
           doc
         </v-btn>
         <v-btn
@@ -27,7 +28,7 @@
           class="text-uppercase font-italic font-weight-medium text-body-2 ma-0"
           @click="logout"
         >
-          log-out
+          <v-icon small class="mr-1">mdi-account-arrow-left</v-icon> log-out
         </v-btn>
       </nav>
       <div>
