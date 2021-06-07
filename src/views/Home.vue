@@ -4,7 +4,14 @@
       <v-col>
         <p class="text-center text-h2 font-weight-bold">TEACHER DASHBOARD</p>
         <v-divider class="my-7"></v-divider>
-        <div v-if="authenticated">Welcome...</div>
+        <v-container v-if="authenticated" fluid class="d-flex justify-center">
+          <div class="d-flex flex-column">
+            <v-btn x-large color="success" @click="gotoDashboard" class="my-5"
+              >DASHBOARD</v-btn
+            >
+            <p class="text-subtitle-1">You are already logged in :)</p>
+          </div>
+        </v-container>
         <LoginForm v-else-if="show === 'login'" />
         <div v-else-if="show === 'signup'"></div>
       </v-col>
@@ -30,6 +37,14 @@ export default {
     return {
       show: "login",
     };
+  },
+
+  methods: {
+    gotoDashboard() {
+      if (this.authenticated) {
+        this.$router.push({ name: "Dashboard" });
+      }
+    },
   },
 
   computed: {
