@@ -1,5 +1,10 @@
 <template>
-  <v-navigation-drawer permanent cliped class="lighten-5">
+  <v-navigation-drawer
+    permanent
+    cliped
+    class="lighten-5"
+    :expand-on-hover="shrinkPanel"
+  >
     <v-list shaped dense>
       <v-list-item class="py-1">
         <v-list-item-content>
@@ -51,6 +56,15 @@ export default {
         { name: "students", text: "Students", icon: "mdi-google-classroom" },
       ],
     };
+  },
+
+  computed: {
+    shrinkPanel() {
+      if (this.$vuetify.breakpoint.name === "xs") {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
