@@ -11,5 +11,8 @@
   "students": [],
   "timestamp": {
     "value": ""
+  },
+  "healthreport": {
+    "status": "okay"
   }
 }
