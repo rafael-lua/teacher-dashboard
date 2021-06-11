@@ -20,9 +20,9 @@ jobs:
           heroku_app_name: "ancient-bayou-49540"
           heroku_email: "rafael.tragueta79@gmail.com"
           appdir: "test-server"
-          healthcheck: "https://ancient-bayou-49540.herokuapp.com/health"
-          checkstring: "okay"
-          rollbackonhealthcheckfailed: true
+          # healthcheck: "https://ancient-bayou-49540.herokuapp.com/health"
+          # checkstring: "okay"
+          # rollbackonhealthcheckfailed: true
   bump_version:
     needs: deploy_server
     if: ${{ github.event_name == 'push' }} # run only on PR merge
