@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
   } else next();
 });
 
-/* ASYNC EXAMPLE
+/* ASYNC EXAMPLE (Could be used to check user on the server every time a route changes)
 
 router.beforeEach(async (to, from, next) => {
   if (to.name !== "Home" && !store.state.authenticated) {
