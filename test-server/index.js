@@ -7,6 +7,11 @@ const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 const cors = require("cors");
+const healthRouter = require("express").Router();
+
+healthRouter.get("/health", (req, res) => {
+  res.status(200).json("okay");
+});
 
 const authorizationChecker = (req, res, next) => {
   const auth = req.get("authorization");
@@ -48,6 +53,7 @@ const timestampChecker = (req, res, next) => {
 };
 
 server.use(cors());
+server.use(healthRouter);
 server.use(authorizationChecker);
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
