@@ -1,0 +1,33 @@
+name: Deploy Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy_server:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "ancient-bayou-49540"
+          heroku_email: "rafael.tragueta79@gmail.com"
+          appdir: "test-server"
+          healthcheck: "https://ancient-bayou-49540.herokuapp.com/health"
+          checkstring: "okay"
+          rollbackonhealthcheckfailed: true
+  bump_version:
+    needs: deploy_server
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # https://github.com/anothrNick/github-tag-action
+      - name: Update version and generate new tag
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
