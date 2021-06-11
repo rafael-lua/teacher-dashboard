@@ -10,7 +10,7 @@ const cors = require("cors");
 const healthRouter = require("express").Router();
 
 healthRouter.get("/health", (req, res) => {
-  res.status(200).json("okay");
+  res.status(200).send("okay");
 });
 
 const authorizationChecker = (req, res, next) => {
