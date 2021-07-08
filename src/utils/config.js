@@ -8,4 +8,4 @@ export const headers = {
 export const API_SERVER =
   process.env.NODE_ENV === "production"
     ? "https://ancient-bayou-49540.herokuapp.com"
-    : "";
+    : "http://localhost:3001";

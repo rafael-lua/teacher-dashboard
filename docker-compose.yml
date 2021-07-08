@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+        vue-front:
+                build: ./
+                container_name: vue-front
+                command: 'npm run serve --silent'
+                ports:
+                        - 8080:8080
+                volumes:
+                        - ./:/usr/src/app
+                        - node-front:/usr/src/app/node_modules
+        
+        express-back:
+                build: ./test-server/
+                container_name: express-back
+                command: 'npm run start'
+                volumes:
+                        - ./test-server:/usr/src/app
+                        - node-back:/usr/src/app/node_modules
+                ports:
+                        - 3001:3001
+
+volumes:
+        node-front:
+        node-back:
